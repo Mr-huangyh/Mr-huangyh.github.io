@@ -16,28 +16,56 @@
 				<p>查询</p>
 			</div>
 		</div>
+		<div id="showBox" style="display:none;">
+			<p></p>
+		</div>
 	</div>
 </body>
-<script type="text/javascript" src=""></script>
+<script type="text/javascript" src="http://11510.oss-accelerate.aliyuncs.com/web_include_file/css/jq/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	var check = (function () {
 		"use strict"
-		let stuNum = document.querySelector("[name = 'stuNum']"),
-			name = document.querySelector("[name = 'name']"),
-			sub = document.getElementById("sub");
-			sub.addEventListener("click", function (){
-				// console.log(stuNum.value,name.value)
-				if (stuNum.value.length != 13) {
-					//弹窗
+		let stuNum = $("[name = 'stuNum']"),
+			name = $("[name = 'name']"),
+			sub = $('#sub'),
+			showBox = $('#showBox');
+
+		showBox.hide();
+		
+		sub.on("click", function () {
+			switch (true) {
+				case stuNum.val().length != 13:
+					show("请正确填写学号长度")
 					console.log("stuNum was mistake");
-					return;
-				}else if (name.value.length <2) {
-					//弹窗
+					break;
+				case !(/.*[0-9]+.*$/.test(stuNum.val())):
+					show("请正确填写学号")
+					console.log("stuNum have another word");
+					break;
+				case name.val().length < 2:
+					show("请正确填写姓名")
 					console.log("name was mistake");
-					return;
-				}
-				//请求
-			})
+					break;
+				default:
+					//请求
+					$.ajax({
+						url: '',
+						type: 'GET',
+						dataType: 'jsonp',
+					})
+					.done(function(data) {
+						console.log(data);
+					});
+					break;
+			}
+		});
+
+		//showWarringBox
+		function show(WarringText) {
+			showBox.find("p").eq(0).html(WarringText);
+			showBox.show();
+		}
+
 		return {};
 	})();
 </script>
