@@ -3,14 +3,42 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 </head>
 <body>
 	<div id="app">
 		<div class="checkInfoMation">
-			<input type="text" name="stuNum" placeholder="请输入学号">
-			<input type="text" name="name" placeholder="请输入姓名">
-			<input type="button">
+			<h1>收件查询</h1>
+			<input type="text" name="stuNum" placeholder="请输入学号" maxlength="13">
+			<input type="text" name="name" placeholder="请输入姓名" maxlength="4">
+			<div id="sub">
+				<p>查询</p>
+			</div>
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src=""></script>
+<script type="text/javascript">
+	var check = (function () {
+		"use strict"
+		let stuNum = document.querySelector("[name = 'stuNum']"),
+			name = document.querySelector("[name = 'name']"),
+			sub = document.getElementById("sub");
+			sub.addEventListener("click", function (){
+				// console.log(stuNum.value,name.value)
+				if (stuNum.value.length != 13) {
+					//弹窗
+					console.log("stuNum was mistake");
+					return;
+				}else if (name.value.length <2) {
+					//弹窗
+					console.log("name was mistake");
+					return;
+				}
+				//请求
+			})
+		return {};
+	})();
+</script>
 </html>
