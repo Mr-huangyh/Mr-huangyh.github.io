@@ -10,50 +10,51 @@
 	<div id="app">
 		<div class="checkInfoMation">
 			<h1>收件查询</h1>
-			<p>学号:&nbsp;<input type="text" name="stuNum" placeholder="请输入13位学号" maxlength="13"></p>
-			<p>姓名:&nbsp;<input type="text" name="name" placeholder="请输入姓名" maxlength="4"></p>
+			<p>学号:&nbsp;<input type="text" name="stuNum" placeholder="请输入13位学号" maxlength="13" value="1711302102001"></p>
+			<p>姓名:&nbsp;<input type="text" name="name" placeholder="请输入姓名" maxlength="4" value="aaa"></p>
 			<div id="sub">
 				<p>查询</p>
 			</div>
 		</div>
-		<div id="errBox" style="display:none;">
+		<div id="tipsBox" style="display:none;">
 			<div class="bg"></div>
 			<div class="context">
-				<p>错误提示</p>
-				<p>aaaaaaaaa</p>
+				<p></p>
+				<p></p>
 			</div>
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="//11510.oss-accelerate.aliyuncs.com/web_include_file/css/jq/jquery-3.4.1.min.js"></script>
+<!-- http://11510.oss-accelerate.aliyuncs.com/web_include_file/js/jq/jquery-3.4.1.min.js -->
+<script type="text/javascript" src="//11510.oss-accelerate.aliyuncs.com/web_include_file/js/jq/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	var check = (function () {
 		"use strict"
 		let stuNum = $("[name = 'stuNum']"),
 			name = $("[name = 'name']"),
 			sub = $('#sub'),
-			errBox = $('#errBox');
+			tipsBox = $('#tipsBox');
 
-		// errBox.hide();
+		// tipsBox.hide();
 		
 		sub.on("click", function () {
 			switch (true) {
 				case stuNum.val().length != 13:
-					show("请正确填写学号长度")
+					show("错误提示","请正确填写学号长度")
 					console.log("stuNum was mistake");
 					break;
 				case !(/.*[0-9]+.*$/.test(stuNum.val())):
-					show("请正确填写学号")
+					show("错误提示","请正确填写学号")
 					console.log("stuNum have another word");
 					break;
 				case name.val().length < 2:
-					show("请正确填写姓名")
+					show("错误提示","请正确填写姓名")
 					console.log("name was mistake");
 					break;
 				default:
 					//请求s
 					$.ajax({
-						url: '',
+						url: 'http://www.huangyh.top/app/courier/api/checkCourier/?name=%E4%BD%95%E4%BF%9D%E5%8D%8E&phone=13702455790&stuNum=1711302102053',
 						type: 'GET',
 						dataType: 'jsonp',
 					})
@@ -64,18 +65,15 @@
 			}
 		});
 
-		errBox.on('click', function() {
-			hide();
-		});
+		tipsBox.on('click', function() {hide();});
 
-		//hideWarringBox
-		function hide() {
-			errBox.fadeOut();
-		}
-		//showWarringBox
-		function show(WarringText) {
-			errBox.find("p").eq(1).html(WarringText);
-			errBox.fadeIn();
+		//hideTipsBox
+		function hide() {tipsBox.fadeOut();}
+		//showTipsBox
+		function show(Title,Text) {
+			tipsBox.find('p').eq(0).html(Title);
+			tipsBox.find("p").eq(1).html(Text);
+			tipsBox.fadeIn();
 		}
 
 		return {};

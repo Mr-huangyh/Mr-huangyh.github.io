@@ -26,8 +26,9 @@ input{
 	height:200px;
 	text-align:center;
 	border-radius:10px;
+	border-color:#dcae1d;
 	/*border:1px solid #333;*/
-	box-shadow:0 0 20px 0;
+	box-shadow:0 0 10px 0 #cda34f;
 }
 .checkInfoMation input{
 	text-align:left;
@@ -37,33 +38,36 @@ input{
 }
 .checkInfoMation h1{
 	margin-bottom:0;
+	font-weight: normal;
 }
 .checkInfoMation p{
 	margin:10px;
 }
 .checkInfoMation #sub{
-	background:#555;
+	background:#cae4db;
 	width:100px;
 	height:2.5rem;
 	line-height:2.5rem;
 	margin:auto;
-	font-weight:bold;
+	font-weight:200;
 	cursor:pointer;
 	transition:0.35s;
 	border-radius:10px;
-	border:1px solid #fff;
+	border:3px solid #fff;
+	color: #555;
+	font-size: 1.5rem;
 }
 .checkInfoMation #sub:hover,
 .checkInfoMation #sub:focus{
 	background:#fff;
-	border-color:#555;
+	border-color:#cae4db;
+	border-width:3px;
 }
 .checkInfoMation #sub p{
 	margin:0;
-	color:;
 }
 
-#errBox{
+#tipsBox{
 	position:absolute;
 	width:100%;
 	height:100%;
@@ -71,7 +75,7 @@ input{
 	left:0;
 	z-index:1000;
 }
-#errBox .bg{
+#tipsBox .bg{
 	position:absolute;
 	width:100%;
 	height:100%;
@@ -79,7 +83,7 @@ input{
 	background:#333;
 	opacity:0.5;
 }
-#errBox .context{
+#tipsBox .context{
 	width:300px;
 	height:200px;
 	position:absolute;
@@ -95,7 +99,7 @@ input{
 	z-index:2;
 	box-shadow:0 0 20px 0;
 }
-#errBox .context p:nth-child(2){
+#tipsBox .context p:nth-child(2){
 	padding-top: 2rem;
     font-size: 1.5rem;
 }
@@ -103,6 +107,11 @@ input{
 /*字体载入*/
 @font-face
 {
-  font-family: zkwyt;
-  src: url('//11510.oss-accelerate.aliyuncs.com/web_include_file/css/font/%E7%AB%99%E9%85%B7%E6%96%87%E8%89%BA%E4%BD%93.ttf');
+	font-family: zkwyt;
+	src: url('//11510.oss-accelerate.aliyuncs.com/web_include_file/css/fonts/%E7%AB%99%E9%85%B7%E6%96%87%E8%89%BA%E4%BD%93.ttf');
+}
+@font-face
+{
+	font-family: lhzt;
+	src: url('//11510.oss-accelerate.aliyuncs.com/web_include_file/css/fonts/濑户字体setofont.ttf');
 }
