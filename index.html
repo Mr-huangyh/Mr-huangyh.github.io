@@ -56,7 +56,7 @@
 					$.ajax({
 						url: 'https://api.huangyh.top:4430?name='+ name.val() +'&stuNum=' + stuNum.val(),
 						type: 'GET',
-						dataType: 'jsonp',
+						dataType: 'json',
 						success:function(msg){
 							console.log(msg);
 						}
