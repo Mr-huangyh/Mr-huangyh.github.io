@@ -10,27 +10,31 @@
 	<div id="app">
 		<div class="checkInfoMation">
 			<h1>收件查询</h1>
-			<input type="text" name="stuNum" placeholder="请输入学号" maxlength="13">
-			<input type="text" name="name" placeholder="请输入姓名" maxlength="4">
+			<p>学号:&nbsp;<input type="text" name="stuNum" placeholder="请输入13位学号" maxlength="13"></p>
+			<p>姓名:&nbsp;<input type="text" name="name" placeholder="请输入姓名" maxlength="4"></p>
 			<div id="sub">
 				<p>查询</p>
 			</div>
 		</div>
-		<div id="showBox" style="display:none;">
-			<p></p>
+		<div id="errBox" style="display:none;">
+			<div class="bg"></div>
+			<div class="context">
+				<p>错误提示</p>
+				<p>aaaaaaaaa</p>
+			</div>
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="//11510.oss-accelerate.aliyuncs.com/web_include_file/css/jq/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="http://11510.oss-accelerate.aliyuncs.com/web_include_file/css/jq/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	var check = (function () {
 		"use strict"
 		let stuNum = $("[name = 'stuNum']"),
 			name = $("[name = 'name']"),
 			sub = $('#sub'),
-			showBox = $('#showBox');
+			errBox = $('#errBox');
 
-		showBox.hide();
+		// errBox.hide();
 		
 		sub.on("click", function () {
 			switch (true) {
@@ -47,7 +51,7 @@
 					console.log("name was mistake");
 					break;
 				default:
-					//请求
+					//请求s
 					$.ajax({
 						url: '',
 						type: 'GET',
@@ -60,10 +64,18 @@
 			}
 		});
 
+		errBox.on('click', function() {
+			hide();
+		});
+
+		//hideWarringBox
+		function hide() {
+			errBox.fadeOut();
+		}
 		//showWarringBox
 		function show(WarringText) {
-			showBox.find("p").eq(0).html(WarringText);
-			showBox.show();
+			errBox.find("p").eq(1).html(WarringText);
+			errBox.fadeIn();
 		}
 
 		return {};
