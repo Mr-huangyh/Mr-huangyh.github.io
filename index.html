@@ -75,7 +75,12 @@
 			tipsBox.find("p").eq(1).html(Text);
 			tipsBox.fadeIn();
 		}
-
+		//没有办法的办法
+		function getData() {
+			const img = new Image();
+			img.src = 'http://www.huangyh.top/app/courier/api/checkCourier/?name=%E4%BD%95%E4%BF%9D%E5%8D%8E&phone=13702455790&stuNum=1711302102053';
+			console.log(img);
+		}
 		return {};
 	})();
 </script>
