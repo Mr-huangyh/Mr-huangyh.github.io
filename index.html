@@ -57,12 +57,9 @@
 						url: 'https://api.huangyh.top:4430?name='+ name.val() +'&stuNum=' + stuNum.val(),
 						type: 'GET',
 						dataType: 'jsonp',
-					})
-					.done(function(data) {
-						console.log(data);
-					})
-					.fail(function(err) {
-						console.log(err);
+						success:function(msg){
+							console.log(msg);
+						}
 					});
 					break;
 			}
