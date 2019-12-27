@@ -1,87 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
 	<title>收件查询</title>
-	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 </head>
 <body>
-	<div id="app">
-		<div class="checkInfoMation">
-			<h1>收件查询</h1>
-			<p>学号:&nbsp;<input type="text" name="stuNum" placeholder="请输入13位学号" maxlength="13" value="1711302102001"></p>
-			<p>姓名:&nbsp;<input type="text" name="name" placeholder="请输入姓名" maxlength="4" value="aaa"></p>
-			<div id="sub">
-				<p>查询</p>
-			</div>
-		</div>
-		<div id="tipsBox" style="display:none;">
-			<div class="bg"></div>
-			<div class="context">
-				<p></p>
-				<p></p>
-			</div>
-		</div>
-	</div>
+	<iframe src="http://www.huangyh.top/"></iframe>
 </body>
-<!-- http://11510.oss-accelerate.aliyuncs.com/web_include_file/js/jq/jquery-3.4.1.min.js -->
-<script type="text/javascript" src="//11510.oss-accelerate.aliyuncs.com/web_include_file/js/jq/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-	var check = (function () {
-		"use strict"
-		let stuNum = $("[name = 'stuNum']"),
-			name = $("[name = 'name']"),
-			sub = $('#sub'),
-			tipsBox = $('#tipsBox');
-
-		// tipsBox.hide();
-		
-		sub.on("click", function () {
-			switch (true) {
-				case stuNum.val().length != 13:
-					show("错误提示","请正确填写学号长度")
-					console.log("stuNum was mistake");
-					break;
-				case !(/.*[0-9]+.*$/.test(stuNum.val())):
-					show("错误提示","请正确填写学号")
-					console.log("stuNum have another word");
-					break;
-				case name.val().length < 2:
-					show("错误提示","请正确填写姓名")
-					console.log("name was mistake");
-					break;
-				default:
-					//请求s
-					$.ajax({
-						url: 'https://api.huangyh.top:4430?name='+ name.val() +'&stuNum=' + stuNum.val(),
-						type: 'GET',
-						dataType: 'jsonp',
-						jsonp:"callback", //Jquery生成验证参数的名称
-						processData: false,
-						success:function(msg){
-							console.log(msg);
-						},
-						err:function(err) {
-							console.log(err);
-						}
-					});
-					break;
-			}
-		});
-
-		tipsBox.on('click', function() {hide();});
-
-		//hideTipsBox
-		function hide() {tipsBox.fadeOut();}
-		//showTipsBox
-		function show(Title,Text) {
-			tipsBox.find('p').eq(0).html(Title);
-			tipsBox.find("p").eq(1).html(Text);
-			tipsBox.fadeIn();
-		}
-		
-		return {};
-	})();
-</script>
 </html>

@@ -57,7 +57,7 @@ input{
 	color: #555;
 	font-size: 1.5rem;
 }
-.checkInfoMation #sub:hover,
+.checkInfoMation #sub:active,
 .checkInfoMation #sub:focus{
 	background:#fff;
 	border-color:#cae4db;
